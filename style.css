@@ -185,10 +185,10 @@ body {
   }
 
   .envelope.open .invitation {
-    transform: translateX(-50%) translateY(-90px) scale(1);
+    transform: translateX(-50%) translateY(-90px) scale(1.2);
   }
 
   .envelope.final .invitation {
-    transform: translateX(-50%) translateY(-80px) scale(1.05);
+    transform: translateX(-50%) translateY(-80px) scale(1.2);
   }
 }
