@@ -5,7 +5,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Great Vibes", cursive;
   background: #efe7dc;
   display: flex;
   align-items: center;
@@ -54,26 +54,71 @@ body {
 
 /* Frente */
 .envelope-front {
-  background: #5a4a3f;
-  border: 2px solid #29221d;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  /* cor da borda */
+  background: #29221d;
+
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.envelope-front::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.12)),
+    #5a4a3f;
+  background-image:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.12)),
+    url("imagens/paper-texture.jpg");
+  background-size: cover;
+  background-blend-mode: soft-light, multiply;
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .logo {
   width: 40%;
   max-width: 160px;
+  position: relative;
+  z-index: 2;
 }
 
 /* Verso */
 .envelope-back {
-  background: #816a5b;
-  border: 2px solid #29221d;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background: #29221d; /* borda */
+
   border-radius: 12px;
   transform: rotateY(180deg);
   overflow: visible;
-  transform-style: preserve-3d;
+}
+
+.envelope-back::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.12)),
+    #816a5b;
+  background-image:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.12)),
+    url("imagens/paper-texture.jpg");
+  background-size: cover;
+  background-blend-mode: soft-light, multiply;
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* Convite */
@@ -161,10 +206,30 @@ body {
   bottom: 0;
   width: 100%;
   height: 100%;
-  background: #5a4a3f;
+
+  background: #29221d; /* borda */
+
   border-radius: 12px;
   clip-path: polygon(0 0, 50% 70%, 100% 0, 100% 100%, 0 100%);
   z-index: 11;
+}
+
+.pocket::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.12)),
+    #5a4a3f;
+  background-image:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.12)),
+    url("imagens/paper-texture.jpg");
+  background-size: cover;
+  background-blend-mode: soft-light, multiply;
+
+  clip-path: polygon(0 0, 50% 70%, 100% 0, 100% 100%, 0 100%);
+  border-radius: 10px;
 }
 
 /* Aba */
@@ -174,17 +239,41 @@ body {
   left: 0;
   width: 100%;
   height: 70%;
-  background: #42362f;
+
+  /* isto é a cor da borda */
+  background: #29221d;
+
   border-radius: 12px;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   transform-origin: top center;
   transition: transform 1s ease;
   z-index: 3;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.flap::before {
+  content: "";
+  position: absolute;
+  inset: 2px; /* espessura da borda */
+
+  /* isto é o interior da aba com textura */
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.18)),
+    #42362f;
+  background-image:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.18)),
+    url("imagens/paper-texture.jpg");
+  background-size: cover;
+  background-blend-mode: soft-light, multiply;
+
+  border-radius: 10px;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
 
 .envelope.open .flap {
   transform: rotateX(180deg);
   z-index: 1;
+  box-shadow: none;
 }
 
 /* Estado final: esconder envelope sem esconder o convite */
