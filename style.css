@@ -188,24 +188,17 @@ body {
     max-width: 90px;
   }
 
-  .invitation img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
+  .invitation {
+    width: 82%;
+    bottom: 25px;
   }
 
   .envelope.open .invitation {
-    transform: translateX(-50%) translateY(-90px) scale(1);
+    transform: translateX(-50%) translateY(-95px) scale(1);
   }
 
   .envelope.final .invitation {
-    top: 50%;
-    left: 50%;
-    bottom: auto;
-
-    width: 90vw; /* ocupa 90% do ecrã */
-    max-width: 420px;
-
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%) translateY(-95px) scale(1.22);
+    opacity: 1;
   }
 }
