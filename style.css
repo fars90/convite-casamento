@@ -225,6 +225,34 @@ body {
   pointer-events: none;
 }
 
+.audio-controls {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* botão */
+.mute-button {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(90, 74, 63, 0.85);
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* slider */
+#volumeSlider {
+  width: 100px;
+  cursor: pointer;
+}
+
 /* MOBILE */
 @media (max-width: 600px) {
   .scene {
