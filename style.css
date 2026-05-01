@@ -161,22 +161,6 @@ body {
   opacity: 1;
 }
 
-/* Telemóveis */
-@media (max-width: 500px) {
-  .scene {
-    width: 300px;
-    height: 220px;
-  }
-
-  .instruction {
-    font-size: 18px;
-  }
-
-  .envelope.open .invitation {
-    transform: translateX(-50%) translateY(-180px);
-  }
-}
-
 /* Estado final */
 .envelope.final .invitation {
   transform: translateX(-50%) translateY(-25px) scale(2);
@@ -194,4 +178,37 @@ body {
 /* Opcional: esconder também a frente */
 .envelope.final .envelope-front {
   opacity: 0;
+}
+
+/* Ajustes para telemóvel */
+@media (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .scene {
+    width: 88vw;
+    height: calc(88vw * 0.72);
+    max-width: 360px;
+    max-height: 260px;
+  }
+
+  .logo {
+    max-width: 38%;
+    max-height: 38%;
+  }
+
+  .invitation {
+    width: 82%;
+    bottom: 25px;
+  }
+
+  .envelope.open .invitation {
+    transform: translateX(-50%) translateY(-95px) scale(1);
+  }
+
+  .envelope.final .invitation {
+    transform: translateX(-50%) translateY(-95px) scale(1.35);
+  }
 }
