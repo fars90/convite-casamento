@@ -1,0 +1,197 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", serif;
+  background: linear-gradient(135deg, #efe7dc, #efe7dc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.page {
+  text-align: center;
+}
+
+.scene {
+  width: 620px;
+  height: 420px;
+  perspective: 1000px;
+}
+
+.envelope {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.envelope-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 1s ease;
+  transform-style: preserve-3d;
+}
+
+.envelope.turned .envelope-inner {
+  transform: rotateY(180deg);
+}
+
+.envelope-front,
+.envelope-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Frente do envelope */
+.envelope-front {
+  background: #5a4a3f;
+  border: 2px solid #29221d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+/* Verso do envelope */
+.envelope-back {
+  background: #816a5b; /* parte de dentro */
+  border: 2px solid #29221d;
+  border-radius: 12px;
+  transform: rotateY(180deg);
+  overflow: visible;
+  transform-style: preserve-3d;
+}
+
+/* Convite */
+.invitation {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  width: 78%;
+  transform: translateX(-50%) translateY(80px) scale(1);
+  transform-origin: center center;
+  opacity: 0;
+  transition:
+    transform 2s ease 0.8s,
+    opacity 0.3s ease 1s;
+  z-index: 10;
+}
+
+.invitation img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.envelope.open .invitation {
+  transform: translateX(-50%) translateY(-180px) scale(1);
+  opacity: 1;
+}
+
+/* Parte inferior do envelope - uma só cor */
+.pocket {
+  position: absolute;
+  left: 0;
+  bottom: 0%;
+  width: 100%;
+  height: 100%; /* igual à aba */
+  background: #5a4a3f; /* parte de tras*/
+  border-radius: 12px;
+  clip-path: polygon(0 0, 50% 70%, 100% 0, 100% 100%, 0 100%);
+  z-index: 11;
+}
+
+/* Aba do envelope */
+.flap {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 70%; /* igual à geometria real */
+  background: #42362f; /* cor da aba */
+  border-radius: 12px;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform 1s ease;
+  z-index: 3;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+/* Convite */
+.invitation {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  width: 78%;
+  transform: translateX(-50%) translateY(80px) scale(1);
+  transform-origin: center center;
+  opacity: 0;
+  transition:
+    transform 2s ease 0.8s,
+    opacity 0.3s ease 1s;
+  z-index: 10;
+}
+
+.invitation img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.envelope.open .invitation {
+  transform: translateX(-50%) translateY(-180px) scale(1);
+  opacity: 1;
+}
+
+/* Telemóveis */
+@media (max-width: 500px) {
+  .scene {
+    width: 300px;
+    height: 220px;
+  }
+
+  .instruction {
+    font-size: 18px;
+  }
+
+  .envelope.open .invitation {
+    transform: translateX(-50%) translateY(-180px);
+  }
+}
+
+/* Estado final */
+.envelope.final .invitation {
+  transform: translateX(-50%) translateY(-25px) scale(2);
+  opacity: 1;
+  transition: transform 1.4s ease;
+  z-index: 30;
+}
+
+.envelope.final .flap,
+.envelope.final .pocket {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Opcional: esconder também a frente */
+.envelope.final .envelope-front {
+  opacity: 0;
+}
