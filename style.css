@@ -102,14 +102,44 @@ body {
 /* Zona clicável do link no convite */
 .link-area {
   position: absolute;
-  bottom: 20px;
-  left: 35%;
+  bottom: 15px;
+  left: 36%;
   transform: translateX(-50%);
-  width: 60%;
+  width: 55%;
   height: 30px;
   z-index: 100;
   display: block;
   pointer-events: auto;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+/* brilho subtil visível */
+.link-area::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  border: 2px solid rgb(255, 255, 255);
+  box-shadow: 0 0 12px rgb(189, 181, 181);
+  animation: pulseGlow 4s infinite;
+}
+
+@keyframes pulseGlow {
+  0% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(1.04);
+  }
+
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
 }
 
 /* Para testar a posição do link, podes ativar isto temporariamente */
