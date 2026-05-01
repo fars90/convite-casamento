@@ -180,25 +180,36 @@ body {
   opacity: 0;
 }
 
-/* Só para telemóvel */
+/* Ajustes para telemóvel */
 @media (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .scene {
+    width: 88vw;
+    height: calc(88vw * 0.72);
+    max-width: 360px;
+    max-height: 260px;
+  }
+
   .logo {
     width: 35%;
     max-width: 90px;
     height: auto;
   }
 
-  .invitation img {
-    width: 100%;
-    max-width: 90vw;
-    height: auto;
+  .invitation {
+    width: 82%;
+    bottom: 25px;
   }
 
   .envelope.open .invitation {
-    transform: translateX(-50%) translateY(-90px) scale(1);
+    transform: translateX(-50%) translateY(-95px) scale(0.8);
   }
 
   .envelope.final .invitation {
-    transform: translateX(-50%) translateY(-80px) scale(1.05);
+    transform: translateX(-50%) translateY(-95px) scale(0.8);
   }
 }
