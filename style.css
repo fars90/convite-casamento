@@ -195,9 +195,8 @@ body {
   }
 
   .logo {
-    width: 35%;
-    max-width: 90px;
-    height: auto;
+    max-width: 38%;
+    max-height: 38%;
   }
 
   .invitation {
@@ -210,6 +209,6 @@ body {
   }
 
   .envelope.final .invitation {
-    transform: translateX(-50%) translateY(-95px) scale(1);
+    transform: translateX(-50%) translateY(-95px) scale(1.35);
   }
 }
