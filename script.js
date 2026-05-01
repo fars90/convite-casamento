@@ -1,4 +1,5 @@
 const envelope = document.getElementById("envelope");
+const instruction = document.getElementById("instruction");
 
 let step = 0;
 
@@ -12,6 +13,7 @@ envelope.addEventListener("click", () => {
 
     setTimeout(() => {
       envelope.classList.add("final");
-    }, 1800);
+      instruction.classList.add("hide");
+    }, 2800);
   }
 });

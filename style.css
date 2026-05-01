@@ -165,6 +165,15 @@ body {
   pointer-events: none;
 }
 
+.instruction {
+  transition: opacity 0.4s ease;
+}
+
+.instruction.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* MOBILE */
 @media (max-width: 600px) {
   .scene {
