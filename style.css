@@ -6,7 +6,7 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: Georgia, "Times New Roman", serif;
-  background: linear-gradient(135deg, #efe7dc, #efe7dc);
+  background: #efe7dc;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,7 +52,7 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* Frente do envelope */
+/* Frente */
 .envelope-front {
   background: #5a4a3f;
   border: 2px solid #29221d;
@@ -62,13 +62,13 @@ body {
 }
 
 .logo {
-  max-width: 200px;
-  max-height: 200px;
+  width: 40%;
+  max-width: 160px;
 }
 
-/* Verso do envelope */
+/* Verso */
 .envelope-back {
-  background: #816a5b; /* parte de dentro */
+  background: #816a5b;
   border: 2px solid #29221d;
   border-radius: 12px;
   transform: rotateY(180deg);
@@ -83,7 +83,7 @@ body {
   bottom: 30px;
   width: 78%;
   transform: translateX(-50%) translateY(80px) scale(1);
-  transform-origin: center center;
+  transform-origin: center;
   opacity: 0;
   transition:
     transform 2s ease 0.8s,
@@ -93,36 +93,37 @@ body {
 
 .invitation img {
   width: 100%;
+  max-width: 90vw;
   border-radius: 8px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
 }
 
 .envelope.open .invitation {
-  transform: translateX(-50%) translateY(-180px) scale(1);
+  transform: translateX(-50%) translateY(-120px) scale(1);
   opacity: 1;
 }
 
-/* Parte inferior do envelope - uma só cor */
+/* Parte de baixo */
 .pocket {
   position: absolute;
   left: 0;
-  bottom: 0%;
+  bottom: 0;
   width: 100%;
-  height: 100%; /* igual à aba */
-  background: #5a4a3f; /* parte de tras*/
+  height: 100%;
+  background: #5a4a3f;
   border-radius: 12px;
   clip-path: polygon(0 0, 50% 70%, 100% 0, 100% 100%, 0 100%);
   z-index: 11;
 }
 
-/* Aba do envelope */
+/* Aba */
 .flap {
   position: absolute;
-  top: 0%;
-  left: 0%;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 70%; /* igual à geometria real */
-  background: #42362f; /* cor da aba */
+  height: 70%;
+  background: #42362f;
   border-radius: 12px;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   transform-origin: top center;
@@ -135,58 +136,37 @@ body {
   z-index: 1;
 }
 
-/* Convite */
-.invitation {
-  position: absolute;
-  left: 50%;
-  bottom: 30px;
-  width: 78%;
-  transform: translateX(-50%) translateY(80px) scale(1);
-  transform-origin: center center;
+/* Estado final: esconder envelope sem esconder o convite */
+.envelope.final .flap,
+.envelope.final .pocket,
+.envelope.final .envelope-front {
   opacity: 0;
+  transition: opacity 0.2s ease 0.2s;
+}
+
+.envelope.final .envelope-back {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
   transition:
-    transform 2s ease 0.8s,
-    opacity 0.3s ease 1s;
-  z-index: 10;
+    background 0.2s ease 0.2s,
+    border-color 0.2s ease 0.2s,
+    box-shadow 0.2s ease 0.2s;
 }
 
-.invitation img {
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
-}
-
-.envelope.open .invitation {
-  transform: translateX(-50%) translateY(-180px) scale(1);
-  opacity: 1;
-}
-
-/* Estado final */
 .envelope.final .invitation {
-  transform: translateX(-50%) translateY(-25px) scale(2);
+  transform: translateX(-50%) translateY(-40px) scale(2);
   opacity: 1;
   transition: transform 1.4s ease;
   z-index: 30;
 }
 
-.envelope.final .flap,
-.envelope.final .pocket {
-  opacity: 0;
-  transition: opacity 0.5s ease;
+.envelope.final {
+  pointer-events: none;
 }
 
-/* Opcional: esconder também a frente */
-.envelope.final .envelope-front {
-  opacity: 0;
-}
-
-/* Ajustes para telemóvel */
+/* MOBILE */
 @media (max-width: 600px) {
-  body {
-    overflow-x: hidden;
-    overflow-y: hidden;
-  }
-
   .scene {
     width: 88vw;
     height: calc(88vw * 0.72);
@@ -195,8 +175,8 @@ body {
   }
 
   .logo {
-    max-width: 38%;
-    max-height: 38%;
+    width: 35%;
+    max-width: 90px;
   }
 
   .invitation {
@@ -205,19 +185,10 @@ body {
   }
 
   .envelope.open .invitation {
-    transform: translateX(-50%) translateY(-95px) scale(1);
+    transform: translateX(-50%) translateY(-90px) scale(1);
   }
 
   .envelope.final .invitation {
-    transform: translateX(-50%) translateY(-95px) scale(1.35);
+    transform: translateX(-50%) translateY(-80px) scale(1.05);
   }
-}
-
-.envelope.final {
-  pointer-events: none;
-}
-
-.envelope.final .envelope-inner {
-  opacity: 0;
-  transition: opacity 0.6s ease 0.8s; /* desaparece depois do zoom */
 }
