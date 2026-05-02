@@ -124,8 +124,8 @@ body {
 /* Zona clicável do link no convite */
 .link-area {
   position: absolute;
-  bottom: 15px;
-  left: 36%;
+  bottom: 6px;
+  left: 50%;
   transform: translateX(-50%);
   width: 55%;
   height: 30px;
@@ -320,8 +320,8 @@ body {
   }
 
   .link-area {
-    bottom: 6px;
-    left: 35%;
+    bottom: 4px;
+    left: 50%;
     width: 60%;
     height: 24px;
   }
@@ -355,8 +355,8 @@ body {
   }
 
   .link-area {
-    bottom: 10px;
-    left: 35%;
+    bottom: 6px;
+    left: 50%;
     width: 60%;
     height: 28px;
   }
