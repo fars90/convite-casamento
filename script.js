@@ -45,3 +45,17 @@ volumeSlider.addEventListener("input", (event) => {
     muteButton.textContent = "🔊";
   }
 });
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    // app em segundo plano → pausa
+    if (music && !music.paused) {
+      music.pause();
+    }
+  } else {
+    // voltou à app → retoma (opcional)
+    if (music && step > 0 && !music.muted) {
+      music.play().catch(() => {});
+    }
+  }
+});
